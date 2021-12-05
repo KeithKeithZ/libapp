@@ -36,3 +36,11 @@ Route::get('/adminLogin', function () {
 Route::get('/checkOut', function () {
     return view('cartCheckOut');
 });
+
+Route::get('/viewReport', function () {
+    return view('viewReport');
+});
+
+Route::get('/userProfile', function () {
+    return view('userProfile');
+});
