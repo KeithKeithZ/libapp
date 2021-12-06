@@ -29,7 +29,9 @@ Route::get('/userRegister', function () {
 });
 
 Route::get('/BookList', function () {
-    return view('bookList');
+    $bookListArr = app('App\Http\Controllers\BookController')->getBooks();
+    print_r($bookListArr);
+    return view('bookList', ['bookList' => $bookListArr]);
 });
 
 Route::get('/adminLogin', function () {
