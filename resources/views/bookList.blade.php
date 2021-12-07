@@ -101,7 +101,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="event-date">
-                                                                <p>{{ $book-> Publisher_ID }}</p>
+                                                                <p>{{ $book-> Name }}</p>
                                                             </div>
                                                         </td>
                                                         <td>

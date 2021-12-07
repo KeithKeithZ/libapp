@@ -30,7 +30,6 @@ Route::get('/userRegister', function () {
 
 Route::get('/BookList', function () {
     $bookListArr = app('App\Http\Controllers\BookController')->getBooks();
-    print_r($bookListArr);
     return view('bookList', ['bookList' => $bookListArr]);
 });
 
