@@ -54,6 +54,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <form class="form-inline my-2 my-lg-0">
+                            <div class="custom-select" style="width:200px;">
+                                <select>
+                                    <option value="0">Search By</option>
+                                    <option value="1">Author</option>
+                                    <option value="2">Book Name</option>
+                                    <option value="3">ISBN</option>
+                                    <option value="4">Category</option>
+                                </select>
+                            </div>
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
@@ -65,10 +74,11 @@
                                             <tr>
                                                 <th class="text-center" scope="col">Author</th>
                                                 <th scope="col">Book Name</th>
+                                                <th scope="col">ISBN</th>
                                                 <th scope="col">Publisher</th>
                                                 <th scope="col">Price</th>
+                                                <th scope="col">Category</th>
                                                 <th class="text-center" scope="col">Book In Stock</th>
-                                                <th class="text-center" scope="col">Publisher</th>
                                             </tr>
                                         </thead>
                                             <tbody>
@@ -91,17 +101,22 @@
                                                         </td>
                                                         <td>
                                                             <div class="event-date">
+                                                                <p>{{ $book-> Publisher_ID }}</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="event-date">
+                                                                <p>{{ $book-> Price }}</p>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="event-date">
                                                                 <p>{{ $book->Category }}</p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="event-date">
                                                                 <p>{{ $book->Book_In_Stock }}</p>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <div class="event-date">
-                                                                <p>{{ $book-> Publisher_ID }}</p>
                                                             </div>
                                                         </td>
                                                         <td>

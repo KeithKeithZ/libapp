@@ -4,5 +4,6 @@ function adminLogin(){
 }
 
 function userLogin(){
-    console.log("AAA")
+    alert("user login successfully!")
+    window.location.replace("/userProfile")
 }

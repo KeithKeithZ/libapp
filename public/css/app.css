@@ -393,3 +393,13 @@ button:focus {
         padding-left: 20px
     }
 }
+
+  .custom-select {
+    position: relative;
+    font-family: Arial;
+    background-color: green;
+  }
+  
+  .custom-select select {
+    display: none; /*hide original SELECT element:*/
+  }
