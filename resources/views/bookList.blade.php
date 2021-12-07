@@ -58,7 +58,7 @@
                                 <select id="searchBy">
                                     <option value="0">Search By</option>
                                     <option value="1">Author</option>
-                                    <option value="2">Book Name</option>
+                                    <option value="2">BookName</option>
                                     <option value="3">ISBN</option>
                                     <option value="4">Category</option>
                                 </select>

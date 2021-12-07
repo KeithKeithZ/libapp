@@ -53,8 +53,7 @@ Route::get('/filterBooks/{params}', function ($params) {
     $array = explode("&", $params);
     $key = explode("=", $array[0])[1];
     $value = explode("=", $array[1])[1];
-    return App::call('App\Http\Controllers\BookController@filterBooks' , ['key' => $key, 'value' => $value]);
-    $bookListArr = app('App\Http\Controllers\BookController')->filterBooks($key, $value);
+    $bookListArr=App::call('App\Http\Controllers\BookController@filterBooks' , ['key' => $key, 'value' => $value]);
     return view('bookList', ['bookList' => $bookListArr]);
 });
 
