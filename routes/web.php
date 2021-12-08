@@ -84,7 +84,7 @@ Route::get('/userProfile/{params}', function ($params) {
 
 Route::get('/login', 'App\Http\Controllers\UserController@getUserLogin');
 
-Route::post('/userRegister', 'App\Http\Controllers\BookController@addOne');
+Route::post('/userRegister', 'App\Http\Controllers\UserController@addOne');
 
 Route::get('/userLogout', function () {
     return view('welcome');
@@ -105,3 +105,5 @@ Route::get('/adminLogin/{params}', function ($params) {
 Route::get('/adminLogout', function () {
     return view('welcome');
 });
+
+Route::post('/bookManage', 'App\Http\Controllers\BookController@bookManage');

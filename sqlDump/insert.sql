@@ -7,21 +7,20 @@ VALUES(1001, '004-12738-26787182', 'Pearson', 'person111@gmail.com', '1126 Speed
 (1006, '004-21892-21891214', 'De Agostini Editore', 'dae666@gmail.com', '128 Rideau Street', '613-123-1292'),
 (1007, '005-12031-43202312', 'Cengage', 'ce777@gmail.com', '1822 Splinter Street', '613-110-7322');
 
-INSERT INTO book (Book_ID, ISBN, BookName, Author, Category, Price, Book_In_Stock, Publisher_ID)
-VALUES (0001, 1984812343, 'Wicked Fox', 'Kat Cho', 'Romance', 29.99, 56, 1001),
-(0002, 0062433253, 'Of Fire and Stars', 'Audrey Coulthurst', 'Romance', 34.99, 23, 1002),
-(0003, 1335218793, 'Storm and Fury', 'Jennifer L. Armentrout', 'Romance', 25.99, 34, 1003),
-(0004, 0062866567, 'A Very Large Expanse of Sea', 'Tahereh Mafi', 'Romance', 26.99, 20, 1004),
-(0005, 1681195089, 'A Curse So Dark and Lonely', 'Brigid Kemmerer', 'Romance', 32.99, 23, 1005),
-(0006, 1524738263, 'Her Royal Highness', 'Rachel Hawkins', 'Romance', 19.99, 30, 1002),
-(0007, 1250299489, 'Tell Me How You Really Feel', 'Aminah Mae Safi', 'Romance', 31.99, 12, 1003),
-(0008, 1984812203, 'Frankly in Love', 'David Yoon', 'Romance', 25.99, 13, 1001),
-(0009, 0062396609, 'Ruined', 'Amy Tintera', 'Romance', 36.49, 25, 1005),
-(0010, 1596431520, 'American Born Chinese', 'Gene Luen Yang', 'Children', 21.99, 33, 1006),
-(0011, 0060760885
-, 'One Crazy Summer', 'Rita Williams-Garcia', 'Children', 28.99, 21, 1007),
-(0012, 0545132053,'Smile', 'Raina Telgemeier', 'Children', 22.99, 27, 1007),
-(0013, 1250098645, 'You Know Me Well', 'Nina LaCour', 'Children', 24.49, 25, 1006);
+INSERT INTO book (ISBN, BookName, Author, Category, Price, Book_In_Stock, Publisher_ID)
+VALUES (1984812343, 'Wicked Fox', 'Kat Cho', 'Romance', 29.99, 56, 1001),
+(0062433253, 'Of Fire and Stars', 'Audrey Coulthurst', 'Romance', 34.99, 23, 1002),
+(1335218793, 'Storm and Fury', 'Jennifer L. Armentrout', 'Romance', 25.99, 34, 1003),
+(0062866567, 'A Very Large Expanse of Sea', 'Tahereh Mafi', 'Romance', 26.99, 20, 1004),
+(1681195089, 'A Curse So Dark and Lonely', 'Brigid Kemmerer', 'Romance', 32.99, 23, 1005),
+(1524738263, 'Her Royal Highness', 'Rachel Hawkins', 'Romance', 19.99, 30, 1002),
+(1250299489, 'Tell Me How You Really Feel', 'Aminah Mae Safi', 'Romance', 31.99, 12, 1003),
+(1984812203, 'Frankly in Love', 'David Yoon', 'Romance', 25.99, 13, 1001),
+(0062396609, 'Ruined', 'Amy Tintera', 'Romance', 36.49, 25, 1005),
+(1596431520, 'American Born Chinese', 'Gene Luen Yang', 'Children', 21.99, 33, 1006),
+(0060760885, 'One Crazy Summer', 'Rita Williams-Garcia', 'Children', 28.99, 21, 1007),
+(0545132053,'Smile', 'Raina Telgemeier', 'Children', 22.99, 27, 1007),
+(1250098645, 'You Know Me Well', 'Nina LaCour', 'Children', 24.49, 25, 1006);
 
 
 INSERT INTO USERS(Username, UserPassword, Email, Address, PhoneNumber, BillingInformation, OrderHistory)

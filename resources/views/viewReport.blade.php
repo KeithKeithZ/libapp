@@ -83,8 +83,8 @@
                 <div class="form-group">
                     <label for="operations">Choose an operation:</label>
                     <select id="operations" name="operations">
-                        <option value="volvo">ADD</option>
-                        <option value="saab">REMOVE</option>
+                        <option value="add">ADD</option>
+                        <option value="remove">REMOVE</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -94,13 +94,13 @@
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Book Name:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="bookName">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">ISBN:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="ISBN">
                             </div>
                     </div>
                 </div>
@@ -108,13 +108,13 @@
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Author:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="author">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Category:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="category">
                             </div>
                     </div>
                 </div>
@@ -122,13 +122,13 @@
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Price:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="price">
                         </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Book_In_Stock:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="stock">
                             </div>
                     </div>
                 </div>
@@ -136,13 +136,14 @@
                     <div class="col-md-6 mb-4">
                         <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Publisher_ID:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="publisher">
                         </div>
                     </div>
                 </div>
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="submitBookManagement()">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
             </div>

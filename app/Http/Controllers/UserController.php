@@ -28,4 +28,16 @@ class UserController extends Controller
         return response($user, 200)
                     ->header('Content-Type', 'application/json');
     }
+
+    public function addOne(Request $request){
+        $payload = json_decode($request->getContent(), true);
+        $username = $payload['Username'];
+        $psw = $payload['UserPassword'];
+        $email = $payload['Email'];
+        $address = $payload['Address'];
+        $phone = $payload['PhoneNumber'];
+        
+        $users = DB::insert('insert into users (Username, UserPassword, Email, Address, PhoneNumber, BillingInformation, OrderHistory) values (?, ?, ?, ?, ?, ?, ?)', [$username, $psw, $email, $address, $phone, '','']);
+        return $users;
+    }
 }

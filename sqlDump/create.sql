@@ -31,7 +31,7 @@ CREATE TABLE publisher(
 );
 
 CREATE TABLE book(
-   Book_ID   INT              NOT NULL,
+   ID int NOT NULL AUTO_INCREMENT,
    ISBN VARCHAR (255),    
    BookName  VARCHAR (255)   ,        
    Author  VARCHAR (255) ,

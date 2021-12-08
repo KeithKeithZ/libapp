@@ -19,16 +19,25 @@ class BookController extends Controller
         $books = collect(DB::select('select * from book left join publisher on book.Publisher_ID = publisher.Publisher_ID'))->where($key, $value);
         return $books;
     }
-
-    public function addOne(Request $request){
+    
+    public function bookManage(Request $request){
         $payload = json_decode($request->getContent(), true);
-        $username = $payload['Username'];
-        $psw = $payload['UserPassword'];
-        $email = $payload['Email'];
-        $address = $payload['Address'];
-        $phone = $payload['PhoneNumber'];
+        $operation = $payload['operation'];
+        $bookName = $payload['BookName'];
         
-        $users = DB::insert('insert into users (Username, UserPassword, Email, Address, PhoneNumber, BillingInformation, OrderHistory) values (?, ?, ?, ?, ?, ?, ?)', [$username, $psw, $email, $address, $phone, '','']);
-        return $users;
+        if($operation === "ADD"){
+            $ISBN = $payload['ISBN'];
+            $author = $payload['Author'];
+            $category = $payload['Category'];
+            $price = $payload['Price'];
+            $stock = $payload['Book_In_Stock'];
+            $publisher = $payload['Publisher_ID'];
+
+            $books = DB::insert('insert into book (ISBN, BookName, Author, Category, Price, Book_In_Stock, Publisher_ID) values (?, ?, ?, ?, ?, ?, ?)', [$ISBN, $bookName, $author, $category, $price, $stock,$publisher]);
+            return $books;
+        }else if ($operation === "REMOVE"){
+            $books = DB::delete('delete from book where BookName="'.$bookName.'"');
+            return $books;
+        }
     }
 }

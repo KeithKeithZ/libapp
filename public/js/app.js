@@ -90,3 +90,27 @@ function adminLogin(){
 
 	xhttp.send();
 }
+
+function submitBookManagement(){
+	let selectedIndex = document.getElementById("operations").value;
+	let operations = document.getElementById("operations").options[document.getElementById("operations").selectedIndex].text;
+    let obj = {operation: operations, BookName: document.getElementById("bookName").value, ISBN: document.getElementById("ISBN").value, Author: document.getElementById("author").value, Category: document.getElementById("category").value, Price: document.getElementById("price").value, Book_In_Stock: document.getElementById("stock").value, Publisher_ID: document.getElementById("publisher").value}
+    console.log(obj)
+
+	let xhttp = new XMLHttpRequest();
+	xhttp.open('POST', '/bookManage', true);
+
+	//Send the proper header information along with the request
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	xhttp.onload = function() {//Call a function when the state changes.
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			// redirect to the page after sending search request
+            window.location.replace("/BookList")
+		} else {
+			alert(xhttp.responseText)
+		}
+	}
+
+	xhttp.send(JSON.stringify(obj));
+}
