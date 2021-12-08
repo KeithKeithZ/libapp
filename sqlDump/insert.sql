@@ -24,15 +24,15 @@ VALUES (0001, 1984812343, 'Wicked Fox', 'Kat Cho', 'Romance', 29.99, 56, 1001),
 (0013, 1250098645, 'You Know Me Well', 'Nina LaCour', 'Children', 24.49, 25, 1006);
 
 
-INSERT INTO USERS(UserID, Username, UserPassword, Email, Address, PhoneNumber, BillingInformation, OrderHistory)
-VALUES('001', 'Cecilia Chapman', 'psw111', 'ccc111@hotmail.com','711 Nulla St', '257-563-7401','5105XXXXXXXX5100', ''),
-('002', 'Iris Watson', 'psw222', 'iw222@hotmail.com','8562 Fusce Rd', '372-587-2335','1839XXXXXXXX2392', ''),
-('003', 'Celeste Slater', 'psw333', 'cs333@hotmail.com','3727 Ullamcorper. Street', '786-713-8616','2833XXXXXXXX1823', ''),
-('004', 'Theodore Lowe', 'psw444', 'tl444@hotmail.com','867-859 Sit Rd', '793-151-6230','2383XXXXXXXX3404', ''),
-('005', 'Kyla Olsen', 'psw555', 'ko555@hotmail.com','711 Nulla St', '257-563-7401','5105XXXXXXXX5100', ''),
-('006', 'Forrest Ray', 'psw666', 'fr666@hotmail.com','103 Integer Rd', '404-960-3807','3283XXXXXXXX1032', ''),
-('007', 'Hiroko Potter', 'psw777', 'hp777@hotmail.com','2508 Dolor. Av', '314-244-6306','4832XXXXXXXX1923', ''),
-('008', 'Lawrence Moreno', 'psw888', 'lm888@hotmail.com','9940 Tortor Street', '684-579-1879','5105XXXXXXXX5100', '');
+INSERT INTO USERS(Username, UserPassword, Email, Address, PhoneNumber, BillingInformation, OrderHistory)
+VALUES('Cecilia Chapman', 'psw111', 'ccc111@hotmail.com','711 Nulla St', '257-563-7401','5105XXXXXXXX5100', ''),
+('Iris Watson', 'psw222', 'iw222@hotmail.com','8562 Fusce Rd', '372-587-2335','1839XXXXXXXX2392', ''),
+('Celeste Slater', 'psw333', 'cs333@hotmail.com','3727 Ullamcorper. Street', '786-713-8616','2833XXXXXXXX1823', ''),
+('Theodore Lowe', 'psw444', 'tl444@hotmail.com','867-859 Sit Rd', '793-151-6230','2383XXXXXXXX3404', ''),
+('Kyla Olsen', 'psw555', 'ko555@hotmail.com','711 Nulla St', '257-563-7401','5105XXXXXXXX5100', ''),
+('Forrest Ray', 'psw666', 'fr666@hotmail.com','103 Integer Rd', '404-960-3807','3283XXXXXXXX1032', ''),
+('Hiroko Potter', 'psw777', 'hp777@hotmail.com','2508 Dolor. Av', '314-244-6306','4832XXXXXXXX1923', ''),
+('Lawrence Moreno', 'psw888', 'lm888@hotmail.com','9940 Tortor Street', '684-579-1879','5105XXXXXXXX5100', '');
 
 
 INSERT INTO ADMIN(Admin_ID, AdminName, AdminPassword)

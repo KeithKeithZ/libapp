@@ -1,5 +1,5 @@
 CREATE TABLE users(
-   UserID   INT              NOT NULL,
+   ID int NOT NULL AUTO_INCREMENT,
    Username VARCHAR (255),    
    UserPassword  VARCHAR (255)   ,        
    Email  VARCHAR (255) ,
@@ -7,7 +7,7 @@ CREATE TABLE users(
    PhoneNumber VARCHAR (255),
    BillingInformation VARCHAR (255),
    OrderHistory   VARCHAR (255),       
-   PRIMARY KEY (UserID)
+   PRIMARY KEY (ID)
 );
 
 CREATE TABLE orders(
@@ -40,7 +40,7 @@ CREATE TABLE book(
    Book_In_Stock INT,
    Publisher_ID INT,
    PRIMARY KEY (Book_ID),
-   FOREIGN KEY (Publisher_ID) REFERENCES PUBLISHER (Publisher_ID) ON UPDATE CASCADE
+   FOREIGN KEY (Publisher_ID) REFERENCES PUBLISHER (Publisher_ID)
 );
 
 
