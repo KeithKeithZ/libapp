@@ -3,11 +3,6 @@ function adminLogin(){
     window.location.replace("/viewReport")
 }
 
-function userLogin(){
-    alert("user login successfully!")
-    window.location.replace("/userProfile")
-}
-
 function filterBooks(){
     var selectedIndex = document.getElementById("searchBy").value; //value='1'
     var searchBy = document.getElementById("searchBy").options[document.getElementById("searchBy").selectedIndex].text;
@@ -54,4 +49,27 @@ function userRegister(){
 	}
 
 	xhttp.send(JSON.stringify(obj));
+}
+
+function userLogin(){
+    let params = "Username=" + document.getElementById("username").value + "&UserPassword=" +  document.getElementById("psw").value;
+	console.log(params)
+
+	let xhttp = new XMLHttpRequest();
+	xhttp.open('GET', '/userLogin/' + params, true);
+
+	//Send the proper header information along with the request
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	xhttp.onload = function() {//Call a function when the state changes.
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			// redirect to the page after sending search request
+			alert("user login successfully!")
+            window.location.replace("/userProfile/Username=" +  document.getElementById("username").value)
+		} else {
+			alert(xhttp.responseText)
+		}
+	}
+
+	xhttp.send();
 }

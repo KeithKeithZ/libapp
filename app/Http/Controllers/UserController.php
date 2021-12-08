@@ -19,4 +19,10 @@ class UserController extends Controller
         $user = collect(DB::select('select * from users'))->firstWhere('Username', $value);
         return $user;
     }
+
+    public function getUserLogin($key1, $value1, $key2, $value2)
+    {
+        $user = DB::select('select * from users where Username =' + $value1 + ' AND ' + ' UserPassword =' + $value2);
+        return $user;
+    }
 }
