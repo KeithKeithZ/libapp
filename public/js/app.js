@@ -33,3 +33,27 @@ function filterBooks(){
 
 	xhttp.send();
 }
+
+function userRegister(){
+    let obj = {Username: document.getElementById("username").value, UserPassword: document.getElementById("psw").value, Email: document.getElementById("email").value, Address: document.getElementById("addr").value, PhoneNumber: document.getElementById("phone").value}
+    console.log(obj)
+
+	let xhttp = new XMLHttpRequest();
+	xhttp.open('POST', '/userRegister', true);
+
+	//Send the proper header information along with the request
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	xhttp.onload = function() {//Call a function when the state changes.
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			// redirect to the page after sending search request
+            console.log(xhttp.readyState)
+			// window.location.replace("/filteredBookList")
+            // window.location.replace(xhttp.responseURL)
+		} else {
+			alert(xhttp.responseText)
+		}
+	}
+
+	xhttp.send(JSON.stringify(obj));
+}

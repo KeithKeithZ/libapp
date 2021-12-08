@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
 
+use Haruncpi\LaravelIdGenerator\IdGenerator;
+
 class BookController extends Controller
 {
     public function getBooks()
@@ -18,5 +20,18 @@ class BookController extends Controller
     {
         $books = collect(DB::select('select * from book left join publisher on book.Publisher_ID = publisher.Publisher_ID'))->where($key, $value);
         return $books;
+    }
+
+    public function addOne(Request $request){
+        $id = IdGenerator::generate(['table' => 'users', 'length' => 1, 'prefix' => date('y')]);
+        $payload = json_decode($request->getContent(), true);
+        $username = $payload['Username'];
+        $psw = $payload['UserPassword'];
+        $email = $payload['Email'];
+        $address = $payload['Address'];
+        $phone = $payload['PhoneNumber'];
+        
+        $users = DB::insert('insert into users (UserID, Username, UserPassword, Email, Address, PhoneNumber, BillingInformation, OrderHistory) values (?, ?, ?, ?, ?, ?, ?, ?)', [$id, $username, $psw, $email, $address, $phone, '','']);
+        return $users;
     }
 }

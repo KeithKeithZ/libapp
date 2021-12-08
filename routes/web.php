@@ -57,6 +57,4 @@ Route::get('/filterBooks/{params}', function ($params) {
     return view('bookList', ['bookList' => $bookListArr]);
 });
 
-// Route::get('/filteredBookList', function () {
-    
-// });
+Route::post('/userRegister', 'App\Http\Controllers\BookController@addOne');
