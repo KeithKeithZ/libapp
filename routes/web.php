@@ -70,12 +70,14 @@ Route::get('/userProfile/{params}', function ($params) {
 
 Route::get('/userLogin/{params}', function ($params) {
     $array = explode("&", $params);
-    $key1 = explode("=", $array[0])[0];
     $value1 = explode("=", $array[0])[1];
-    $key2 = explode("=", $array[1])[0];
     $value2 = explode("=", $array[1])[1];
-    $userProfile=App::call('App\Http\Controllers\UserController@getUserLogin' , ['key1' => $key1, 'value1' => $value1, 'key2' => $key2, 'value2' => $value2]);
-    return view('userProfile', ['user' => $userProfile]);
+    $userProfile=App::call('App\Http\Controllers\UserController@getUserLogin' , ['value1' => $value1, 'value2' => $value2]);
+    if($userProfile === null){
+        echo '<script>alert("Invalid Username and Password.")<script>';
+    }else{
+        return view('userProfile', ['user' => $userProfile]);
+    }
 });
 
 Route::post('/userRegister', 'App\Http\Controllers\BookController@addOne');

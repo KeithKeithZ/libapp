@@ -43,7 +43,7 @@
                     <img src="https://www.bootdey.com/img/Content/avatar/avatar6.png" alt="...">
                     <div class="card-body p-1-9 p-xl-5">
                         <div class="mb-4">
-                            <h3 class="h4 mb-0">{{ $user->Username }}</h3>
+                            <h3 class="h4 mb-0">{{ $user->Username }}</h3> 
                         </div>
                         <ul class="list-unstyled mb-4">
                             <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{ $user->Email }}</a></li>
