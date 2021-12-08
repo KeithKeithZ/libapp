@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/book', [BookController::class, 'getBooks']);
 
+Route::get('/user', [UserController::class, 'getUsers']);
+
 Route::get('/userLogin', function () {
     return view('userSignIn');
 });
@@ -46,7 +48,8 @@ Route::get('/viewReport', function () {
 });
 
 Route::get('/userProfile', function () {
-    return view('userProfile');
+    $userProfile = app('App\Http\Controllers\UserController')->getUsers();
+    return view('userProfile', ['userProfile' => $userProfile]);
 });
 
 Route::get('/filterBooks/{params}', function ($params) {
@@ -55,6 +58,13 @@ Route::get('/filterBooks/{params}', function ($params) {
     $value = explode("=", $array[1])[1];
     $bookListArr=App::call('App\Http\Controllers\BookController@filterBooks' , ['key' => $key, 'value' => $value]);
     return view('bookList', ['bookList' => $bookListArr]);
+});
+
+Route::get('/userProfile/{params}', function ($params) {
+    $array = explode("=", $params);
+    $value =$array[1];
+    $userProfile=App::call('App\Http\Controllers\UserController@getUser' , ['value' => $value]);
+    return view('userProfile', ['user' => $userProfile]);
 });
 
 Route::post('/userRegister', 'App\Http\Controllers\BookController@addOne');

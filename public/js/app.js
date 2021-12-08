@@ -47,9 +47,7 @@ function userRegister(){
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
-            console.log(xhttp.readyState)
-			// window.location.replace("/filteredBookList")
-            // window.location.replace(xhttp.responseURL)
+            window.location.replace("/userProfile/Username=" +  document.getElementById("username").value)
 		} else {
 			alert(xhttp.responseText)
 		}

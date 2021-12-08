@@ -43,13 +43,12 @@
                     <img src="https://www.bootdey.com/img/Content/avatar/avatar6.png" alt="...">
                     <div class="card-body p-1-9 p-xl-5">
                         <div class="mb-4">
-                            <h3 class="h4 mb-0">Dakota Johnston</h3>
-                            <span class="text-primary">CEO &amp; Founder</span>
+                            <h3 class="h4 mb-0">{{ $user->Username }}</h3>
                         </div>
                         <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>dakota@gmail.com</a></li>
-                            <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>+012 (345) 6789</a></li>
-                            <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>205 Main Street, USA</a></li>
+                            <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{ $user->Email }}</a></li>
+                            <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>{{ $user->PhoneNumber }}</a></li>
+                            <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>{{ $user->Address }}</a></li>
                         </ul>
                         <ul class="social-icon-style2 ps-0">
                             <li><a href="#!" class="rounded-3"><i class="fab fa-facebook-f"></i></a></li>
@@ -66,8 +65,7 @@
                         <div class="text-start mb-1-6 wow fadeIn">
                             <h2 class="h1 mb-0 text-primary">#Billing Information</h2>
                         </div>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
-                        <p class="mb-0">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                        <p class="mb-0">{{ $user->BillingInformation }}</p>
                     </div>
                     <div class="mb-5 wow fadeIn">
                         <div class="text-start mb-1-6 wow fadeIn">
