@@ -23,12 +23,6 @@ class UserController extends Controller
     public function getUserLogin ($value1, $value2)
     {
         $user = collect(DB::select('select * from users where Username="'.$value1.'" AND UserPassword="'.$value2.'"'))->first();
-        return $user;
-        // if(is_object($user)){
-        //     echo '<script>alert("Invalid Username with password")</script>'; 
-        //     // return $user;   
-        // } else {
-        //     echo '<script>alert("Invalid Username with password")</script>'; 
-        // }    
+        return $user; 
     }
 }

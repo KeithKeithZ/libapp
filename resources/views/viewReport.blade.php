@@ -39,6 +39,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Sales per Author</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@perOrder">Sales per Order</button>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@userList">User List</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@userList">Manage Book</button>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -58,6 +59,86 @@
                 <div class="form-group">
                     <label for="message-text" class="col-form-label">Message:</label>
                     <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Manage Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="form-group">
+                    <label for="operations">Choose an operation:</label>
+                    <select id="operations" name="operations">
+                        <option value="volvo">ADD</option>
+                        <option value="saab">REMOVE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p>Fill in 'Book Name' only to remove a book. Fill in all fields below to add a book. </p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Book Name:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">ISBN:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Author:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Category:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Price:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Book_In_Stock:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Publisher_ID:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                    </div>
                 </div>
                 </form>
             </div>

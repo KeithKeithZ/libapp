@@ -85,3 +85,19 @@ Route::post('/userRegister', 'App\Http\Controllers\BookController@addOne');
 Route::get('/userLogout', function () {
     return view('welcome');
 });
+
+Route::get('/adminLogin/{params}', function ($params) {
+    $array = explode("&", $params);
+    $value1 = explode("=", $array[0])[1];
+    $value2 = explode("=", $array[1])[1];
+    $adminProfile=App::call('App\Http\Controllers\AdminController@getAdminLogin' , ['value1' => $value1, 'value2' => $value2]);
+    if($adminProfile === null){
+        echo '<script>alert("Invalid Username and Password.")<script>';
+    }else{
+        echo '<script>alert("Admin Successfully login.")<script>';
+    }
+});
+
+Route::get('/adminLogout', function () {
+    return view('welcome');
+});
