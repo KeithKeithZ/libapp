@@ -23,10 +23,9 @@ class UserController extends Controller
     public function getUserLogin(Request $request)
     {
         $username = $request->get('Username');
-        $password = $request->get('Password');
-        $user = collect(DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"'))->first();
-        return response($user, 200)
-                    ->header('Content-Type', 'application/json');
+        $password = $request->get('UserPassword');
+        $user = DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"');
+        return $user;
     }
 
     public function addOne(Request $request){
