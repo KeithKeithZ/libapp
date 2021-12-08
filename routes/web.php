@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -68,17 +69,20 @@ Route::get('/userProfile/{params}', function ($params) {
 });
 
 
-Route::get('/userLogin/{params}', function ($params) {
-    $array = explode("&", $params);
-    $value1 = explode("=", $array[0])[1];
-    $value2 = explode("=", $array[1])[1];
-    $userProfile=App::call('App\Http\Controllers\UserController@getUserLogin' , ['value1' => $value1, 'value2' => $value2]);
-    if($userProfile === null){
-        echo '<script>alert("Invalid Username and Password.")<script>';
-    }else{
-        return view('userProfile', ['user' => $userProfile]);
-    }
-});
+// Route::get('/login', function () {
+//     dd($username);
+//     // $array = explode("&", $params);
+//     // $value1 = explode("=", $array[0])[1];
+//     // $value2 = explode("=", $array[1])[1];
+//     // $userProfile=App::call('App\Http\Controllers\UserController@getUserLogin' , ['value1' => $value1, 'value2' => $value2]);
+//     // if($userProfile === null){
+//     //     echo '<script>alert("Invalid Username and Password.")<script>';
+//     // }else{
+//     //     return view('userProfile', ['user' => $userProfile]);
+//     // }
+// });
+
+Route::get('/login', 'App\Http\Controllers\UserController@getUserLogin');
 
 Route::post('/userRegister', 'App\Http\Controllers\BookController@addOne');
 

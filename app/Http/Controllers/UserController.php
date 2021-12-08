@@ -20,9 +20,12 @@ class UserController extends Controller
         return $user;
     }
 
-    public function getUserLogin ($value1, $value2)
+    public function getUserLogin(Request $request)
     {
-        $user = collect(DB::select('select * from users where Username="'.$value1.'" AND UserPassword="'.$value2.'"'))->first();
-        return $user; 
+        $username = $request->get('Username');
+        $password = $request->get('Password');
+        $user = collect(DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"'))->first();
+        return response($user, 200)
+                    ->header('Content-Type', 'application/json');
     }
 }

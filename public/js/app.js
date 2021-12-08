@@ -47,23 +47,23 @@ function userRegister(){
 }
 
 function userLogin(){
-    let params = "Username=" + document.getElementById("username").value + "&UserPassword=" +  document.getElementById("psw").value;
+    let params = "?Username=" + document.getElementById("username").value + "&UserPassword=" +  document.getElementById("psw").value;
 	console.log(params)
 
 	let xhttp = new XMLHttpRequest();
-	xhttp.open('GET', '/userLogin/' + params, true);
+	xhttp.open('GET', '/login' + params, true);
 
 	//Send the proper header information along with the request
 	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
 	xhttp.onload = function() {//Call a function when the state changes.
-		if(xhttp.readyState == 4 && xhttp.status == 200) {
-			// redirect to the page after sending search request
-			alert("user login successfully!")
-            window.location.replace("/userProfile/Username=" +  document.getElementById("username").value)
-		} else {
-			alert(xhttp.responseText)
-		}
+		// if(xhttp.readyState == 4 && xhttp.status == 200) {
+		// 	// redirect to the page after sending search request
+		// 	alert(xhttp.responseText)
+        //     window.location.replace("/userProfile/Username=" +  document.getElementById("username").value)
+		// } else {
+		// 	alert(xhttp.responseText)
+		// }
 	}
 
 	xhttp.send();
