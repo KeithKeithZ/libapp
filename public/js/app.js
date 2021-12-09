@@ -1,5 +1,8 @@
 let Username;
 let AdminName;
+let currentCart = [];
+
+
 function filterBooks(){
     var selectedIndex = document.getElementById("searchBy").value; //value='1'
     var searchBy = document.getElementById("searchBy").options[document.getElementById("searchBy").selectedIndex].text;
@@ -119,28 +122,41 @@ function submitBookManagement(){
 	xhttp.send(JSON.stringify(obj));
 }
 
-function addToCart(){
-	
+function addToCart(bookId, bookName, bookPrice, bookAuthor){
+	let newOrderBook = {
+		"id": bookId,
+		"BookName": bookName,
+		"Price": bookPrice,
+		"Author": bookAuthor
+	}
+	currentCart.push(newOrderBook);
+	console.log(currentCart);
 }
 
 function reply_click(clicked_id)
   {
-	let obj = {ID: clicked_id}
-	console.log(clicked_id)
-	let xhttp = new XMLHttpRequest();
-	xhttp.open('POST', '/shoppingBag', true);
+	// let obj = {ID: clicked_id}
+	// console.log(clicked_id)
+	// let xhttp = new XMLHttpRequest();
+	// xhttp.open('POST', '/shoppingBag', true);
 
-	//Send the proper header information along with the request
-	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	// //Send the proper header information along with the request
+	// xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
-	xhttp.onload = function() {//Call a function when the state changes.
-		if(xhttp.readyState == 4 && xhttp.status == 200) {
-			// redirect to the page after sending search request
-            // window.location.replace("/checkOut")
-		} else {
-			alert(xhttp.responseText)
-		}
-	}
+	// xhttp.onload = function() {//Call a function when the state changes.
+	// 	if(xhttp.readyState == 4 && xhttp.status == 200) {
+	// 		// redirect to the page after sending search request
+    //         // window.location.replace("/checkOut")
+	// 	} else {
+	// 		alert(xhttp.responseText)
+	// 	}
+	// }
 
-	xhttp.send(JSON.stringify(obj));
+	// xhttp.send(JSON.stringify(obj));
   }
+
+  $('#myModal').on('shown.bs.modal', function () {
+	$('#myInput').trigger('focus')
+	console.log("display this: ", currentCart);
+  })
+  
