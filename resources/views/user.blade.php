@@ -27,7 +27,7 @@
                 <a class="nav-link" href="/adminLogin">Admin Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/checkOut">Check Out</a>
+                <a class="nav-link" href="/checkOut" >Check Out</a>
             </li>
             </ul>
         </div>

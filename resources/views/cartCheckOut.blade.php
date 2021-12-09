@@ -10,6 +10,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css"></script>
+        <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
     </head>
     <nav class="navbar navbar-expand-lg navbar-light bg-light"> 
         <a class="navbar-brand" href="/">Dashboard</a>
@@ -36,77 +37,48 @@
 
     <body>
         <div class="container px-4 py-5 mx-auto">
+        <div class="row d-flex justify-content-left">
+            <h4 class="heading">Shopping Bag</h4>
+        </div>
         <div class="row d-flex justify-content-center">
-            <div class="col-5">
-                <h4 class="heading">Shopping Bag</h4>
-            </div>
-            <div class="col-7">
+            <div class="col-12">
                 <div class="row text-right">
-                    <div class="col-4">
-                        <h6 class="mt-2">Format</h6>
+                    <div class="col-3">
+                        <h6 class="mt-2">Book Name</h6>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
+                        <h6 class="mt-2">Category</h6>
+                    </div>
+                    <div class="col-3">
                         <h6 class="mt-2">Quantity</h6>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <h6 class="mt-2">Price</h6>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row d-flex justify-content-center border-top">
-            <div class="col-5">
-                <div class="row d-flex">
-                    <div class="book"> <img src="https://i.imgur.com/2DsA49b.jpg" class="book-img"> </div>
-                    <div class="my-auto flex-column d-flex pad-left">
-                        <h6 class="mob-text">Thinking, Fast and Slow</h6>
-                        <p class="mob-text">Daniel Kahneman</p>
-                    </div>
-                </div>
-            </div>
-            <div class="my-auto col-7">
+        <div class="row d-flex justify-content-center">
+        @foreach ($shoppingBag as $item)
+            <div class="col-12">
                 <div class="row text-right">
-                    <div class="col-4">
-                        <p class="mob-text">Digital</p>
+                    <div class="col-3">
+                        <p class="mob-text">{{ $item->BookName }}</p>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
+                        <p class="mob-text">{{ $item->Author }}</p>
+                    </div>
+                    <div class="col-3">
                         <div class="row d-flex justify-content-end px-3">
-                            <p class="mb-0" id="cnt1">1</p>
-                            <div class="d-flex flex-column plus-minus"> <span class="vsm-text plus">+</span> <span class="vsm-text minus">-</span> </div>
+                            <p class="mb-0" id="cnt1">{{ $item->Category }}</p>
                         </div>
                     </div>
-                    <div class="col-4">
-                        <h6 class="mob-text">$9.99</h6>
+                    <div class="col-3">
+                        <h6 class="mob-text">{{ $item->Price }}</h6>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row d-flex justify-content-center border-top">
-            <div class="col-5">
-                <div class="row d-flex">
-                    <div class="book"> <img src="https://i.imgur.com/Oj1iQUX.jpg" class="book-img"> </div>
-                    <div class="my-auto flex-column d-flex pad-left">
-                        <h6 class="mob-text">Homo Deus: A Brief<br>History of Tomorrow</h6>
-                        <p class="mob-text">Yuval Noah Harari</p>
-                    </div>
-                </div>
-            </div>
-            <div class="my-auto col-7">
-                <div class="row text-right">
-                    <div class="col-4">
-                        <p class="mob-text">Paperback</p>
-                    </div>
-                    <div class="col-4">
-                        <div class="row d-flex justify-content-end px-3">
-                            <p class="mb-0" id="cnt2">1</p>
-                            <div class="d-flex flex-column plus-minus"> <span class="vsm-text plus">+</span> <span class="vsm-text minus">-</span> </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <h6 class="mob-text">$13.50</h6>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-12">

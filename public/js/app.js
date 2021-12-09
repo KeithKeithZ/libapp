@@ -1,3 +1,5 @@
+let Username;
+let AdminName;
 function filterBooks(){
     var selectedIndex = document.getElementById("searchBy").value; //value='1'
     var searchBy = document.getElementById("searchBy").options[document.getElementById("searchBy").selectedIndex].text;
@@ -37,6 +39,7 @@ function userRegister(){
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
+			Username=document.getElementById("username").value;
             window.location.replace("/userProfile/Username=" +  document.getElementById("username").value)
 		} else {
 			alert(xhttp.responseText)
@@ -59,6 +62,7 @@ function userLogin(){
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
+			Username=document.getElementById("username").value;
             window.location.replace("/userProfile/Username=" +  document.getElementById("username").value)
 		} else {
 			alert(xhttp.responseText)
@@ -81,6 +85,7 @@ function adminLogin(){
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
+			AdminName=document.getElementById("admin").value;
             window.location.replace("viewReport")
 		} else {
 			alert(xhttp.responseText)
@@ -113,3 +118,29 @@ function submitBookManagement(){
 
 	xhttp.send(JSON.stringify(obj));
 }
+
+function addToCart(){
+	
+}
+
+function reply_click(clicked_id)
+  {
+	let obj = {ID: clicked_id}
+	console.log(clicked_id)
+	let xhttp = new XMLHttpRequest();
+	xhttp.open('POST', '/shoppingBag', true);
+
+	//Send the proper header information along with the request
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	xhttp.onload = function() {//Call a function when the state changes.
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			// redirect to the page after sending search request
+            // window.location.replace("/checkOut")
+		} else {
+			alert(xhttp.responseText)
+		}
+	}
+
+	xhttp.send(JSON.stringify(obj));
+  }

@@ -40,10 +40,6 @@ Route::get('/adminLogin', function () {
     return view('adminSignIn');
 });
 
-Route::get('/checkOut', function () {
-    return view('cartCheckOut');
-});
-
 Route::get('/viewReport', function () {
     return view('viewReport');
 });
@@ -107,3 +103,10 @@ Route::get('/adminLogout', function () {
 });
 
 Route::post('/bookManage', 'App\Http\Controllers\BookController@bookManage');
+
+Route::post('/shoppingBag', 'App\Http\Controllers\OrderController@addToCart');
+
+Route::get('/checkOut', function () {
+    $itemList = app('App\Http\Controllers\OrderController')->getCart();
+    return view('cartCheckOut', ['shoppingBag' => $itemList]);
+});

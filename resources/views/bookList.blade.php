@@ -86,12 +86,12 @@
                                                     <tr class="inner-box">
                                                         <th scope="row">
                                                             <div class="event-date">
-                                                                <p>{{ $book->Author }}</p>
+                                                                <p>{{ $book->BookName }}</p>
                                                             </div>
                                                         </th>
                                                         <td>
                                                             <div class="event-date">
-                                                                <p>{{ $book->BookName }}</p>
+                                                                <p id='bookName'>{{ $book->Author }}</p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -106,12 +106,12 @@
                                                         </td>
                                                         <td>
                                                             <div class="event-date">
-                                                                <p>{{ $book-> Price }}</p>
+                                                                <p id="price">{{ $book-> Price }}</p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="event-date">
-                                                                <p>{{ $book->Category }}</p>
+                                                                <p id="category">{{ $book->Category }}</p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -121,7 +121,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="primary-btn">
-                                                                <a class="btn btn-primary" href="#">Add to Cart</a>
+                                                            <button type="button" class="btn btn-primary" onclick="addToCart(); reply_click(this.id)" id={{ $book->ID }}>Add to Cart</button>
                                                             </div>
                                                         </td>
                                                     </tr>
