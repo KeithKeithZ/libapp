@@ -27,7 +27,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/adminLogin">Admin Login</a>
             </li>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="open-AddBookDialog btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                 Checkout
             </button>
             </ul>
@@ -121,11 +121,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="primary-btn">
-<<<<<<< HEAD
-                                                            <button type="button" class="btn btn-primary" onclick="reply_click(this.id)" id={{ $book->ID }}>Add to Cart</button>
-=======
-                                                            <button type="button" class="btn btn-primary" onclick="addToCart(this.id, '{{ $book->BookName }}', '{{ $book-> Price }}', '{{ $book-> Author }}');" id="{{ $book->ID }}">Add to Cart</button>
->>>>>>> b0b4af346f4a59714b03ba3013d7b75fbb662b50
+                                                                <button type="button" class="btn btn-primary" onclick="addToCart(this.id, '{{ $book->BookName }}', '{{ $book-> Price }}', '{{ $book-> Author }}');" id="{{ $book->ID }}">Add to Cart</button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -147,12 +143,12 @@
             <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+                <div class="modal-body">
+                    <input type="text" name="hiddenValue" id="hiddenValue" value="" />
+                </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
-            </div>
-            <div class="modal-body">
-                {{ $currentCart ?? '' }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,12 +1,7 @@
 let Username;
 let AdminName;
-<<<<<<< HEAD
-let bag = [];
-=======
 let currentCart = [];
 
-
->>>>>>> b0b4af346f4a59714b03ba3013d7b75fbb662b50
 function filterBooks(){
     var selectedIndex = document.getElementById("searchBy").value; //value='1'
     var searchBy = document.getElementById("searchBy").options[document.getElementById("searchBy").selectedIndex].text;
@@ -128,7 +123,28 @@ function submitBookManagement(){
 	xhttp.send(JSON.stringify(obj));
 }
 
-<<<<<<< HEAD
+function addToCart(bookId, bookName, bookPrice, bookAuthor){
+	let newOrderBook = {
+		"id": bookId,
+		"BookName": bookName,
+		"Price": bookPrice,
+		"Author": bookAuthor
+	}
+	currentCart.push(newOrderBook);
+	console.log(currentCart)
+}
+
+$(document).on('click', ".open-AddBookDialog", function (event) {
+	var button = $(event.relatedTarget) // Button that triggered the modal
+	var recipient = '11111' // Extract info from data-* attributes
+	// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+	// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+	console.log(recipient)
+	// var modal = $(this)
+	// modal.find('.modal-title').text('New message to ' + recipient)
+	$(".modal-body #hiddenValue").val(recipient);
+  })
+
 function reply_click(clicked_id){
 	let item = {BookName:document.getElementById(clicked_id).getElementsByClassName("event-bookName")[0]["firstElementChild"].innerText,
 				Author: document.getElementById(clicked_id).getElementsByClassName("event-author")[0]["firstElementChild"].innerText,
@@ -182,43 +198,3 @@ function viewReport(clicked_id){
 
 	xhttp.send(JSON.stringify(obj));
 }
-=======
-function addToCart(bookId, bookName, bookPrice, bookAuthor){
-	let newOrderBook = {
-		"id": bookId,
-		"BookName": bookName,
-		"Price": bookPrice,
-		"Author": bookAuthor
-	}
-	currentCart.push(newOrderBook);
-	console.log(currentCart);
-}
-
-function reply_click(clicked_id)
-  {
-	// let obj = {ID: clicked_id}
-	// console.log(clicked_id)
-	// let xhttp = new XMLHttpRequest();
-	// xhttp.open('POST', '/shoppingBag', true);
-
-	// //Send the proper header information along with the request
-	// xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-	// xhttp.onload = function() {//Call a function when the state changes.
-	// 	if(xhttp.readyState == 4 && xhttp.status == 200) {
-	// 		// redirect to the page after sending search request
-    //         // window.location.replace("/checkOut")
-	// 	} else {
-	// 		alert(xhttp.responseText)
-	// 	}
-	// }
-
-	// xhttp.send(JSON.stringify(obj));
-  }
-
-  $('#myModal').on('shown.bs.modal', function () {
-	$('#myInput').trigger('focus')
-	console.log("display this: ", currentCart);
-  })
-  
->>>>>>> b0b4af346f4a59714b03ba3013d7b75fbb662b50
