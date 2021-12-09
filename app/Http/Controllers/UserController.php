@@ -27,7 +27,13 @@ class UserController extends Controller
         $username = $request->get('Username');
         $password = $request->get('UserPassword');
         $user = DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"');
-        return $user;
+        if (sizeof($user) > 0) {
+            return response($user, 200)
+                        ->header('Content-Type', 'application/json');
+        } else {
+            return response("login failed.", 400)
+                        ->header('Content-Type', 'text/plain');
+        }
     }
 
     public function addOne(Request $request){

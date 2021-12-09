@@ -39,7 +39,7 @@ CREATE TABLE book(
    Price decimal (5, 2),   
    Book_In_Stock INT,
    Publisher_ID INT,
-   PRIMARY KEY (Book_ID),
+   PRIMARY KEY (ID),
    FOREIGN KEY (Publisher_ID) REFERENCES PUBLISHER (Publisher_ID)
 );
 
