@@ -14,9 +14,17 @@ class AdminController extends Controller
         dd($admins);
     }
 
-    public function getAdminLogin ($value1, $value2)
+    public function getAdminLogin(Request $request)
     {
-        $admin = collect(DB::select('select * from admin where AdminName="'.$value1.'" AND AdminPassword="'.$value2.'"'))->first();
-        return $admin; 
+        $username = $request->get('AdminName');
+        $password = $request->get('AdminPassword');
+        $admin = DB::select('select * from admin where AdminName="'.$username.'" AND AdminPassword="'.$password.'"');
+        if (sizeof($admin) > 0) {
+            return response($admin, 200)
+                        ->header('Content-Type', 'application/json');
+        } else {
+            return response("Admin login failed.", 400)
+                        ->header('Content-Type', 'text/plain');
+        }
     }
 }

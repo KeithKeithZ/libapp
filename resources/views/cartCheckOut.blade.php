@@ -47,10 +47,10 @@
                         <h6 class="mt-2">Book Name</h6>
                     </div>
                     <div class="col-3">
-                        <h6 class="mt-2">Category</h6>
+                        <h6 class="mt-2">Author</h6>
                     </div>
                     <div class="col-3">
-                        <h6 class="mt-2">Quantity</h6>
+                        <h6 class="mt-2">Category</h6>
                     </div>
                     <div class="col-3">
                         <h6 class="mt-2">Price</h6>

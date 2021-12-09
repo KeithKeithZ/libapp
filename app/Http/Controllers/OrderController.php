@@ -25,16 +25,13 @@ class OrderController extends Controller
     public function addToCart(Request $request)
     {
         $payload = json_decode($request->getContent(), true);
-        $ID = $payload['ID'];
-        $book = DB::select('select BookName, Author, Category, Price from book where ID="'.$ID.'"');
-        array_push($this->bag, $book[0]);
-        return $this->bag;
-        // return $book;
+        $this-> bag = $payload['shoppingBag'];
+        return redirect()->route('checkOut');
     }
 
     public function getCart()
     {
-        return $bag = $this->bag;;
+        return view('cartCheckOut', ['shoppingBag' => $this-> bag]);
     }
 
 }

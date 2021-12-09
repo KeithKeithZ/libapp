@@ -1,5 +1,6 @@
 let Username;
 let AdminName;
+let bag = [];
 function filterBooks(){
     var selectedIndex = document.getElementById("searchBy").value; //value='1'
     var searchBy = document.getElementById("searchBy").options[document.getElementById("searchBy").selectedIndex].text;
@@ -28,7 +29,8 @@ function filterBooks(){
 
 function userRegister(){
     let obj = {Username: document.getElementById("username").value, UserPassword: document.getElementById("psw").value, Email: document.getElementById("email").value, Address: document.getElementById("addr").value, PhoneNumber: document.getElementById("phone").value}
-    console.log(obj)
+    Username = document.getElementById("username").value;
+	console.log(obj)
 
 	let xhttp = new XMLHttpRequest();
 	xhttp.open('POST', '/userRegister', true);
@@ -51,6 +53,7 @@ function userRegister(){
 
 function userLogin(){
     let params = "?Username=" + document.getElementById("username").value + "&UserPassword=" +  document.getElementById("psw").value;
+	
 	console.log(params)
 
 	let xhttp = new XMLHttpRequest();
@@ -73,11 +76,11 @@ function userLogin(){
 }
 
 function adminLogin(){
-    let params = "AdminName=" + document.getElementById("admin").value + "&AdminPassword=" +  document.getElementById("psw").value;
+	let params = "?AdminName=" + document.getElementById("admin").value + "&AdminPassword=" +  document.getElementById("psw").value;
 	console.log(params)
 
 	let xhttp = new XMLHttpRequest();
-	xhttp.open('GET', '/adminLogin/' + params, true);
+	xhttp.open('GET', '/checkAdminLogin/' + params, true);
 
 	//Send the proper header information along with the request
 	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -119,14 +122,16 @@ function submitBookManagement(){
 	xhttp.send(JSON.stringify(obj));
 }
 
-function addToCart(){
-	
-}
+function reply_click(clicked_id){
+	let item = {BookName:document.getElementById(clicked_id).getElementsByClassName("event-bookName")[0]["firstElementChild"].innerText,
+				Author: document.getElementById(clicked_id).getElementsByClassName("event-author")[0]["firstElementChild"].innerText,
+				Category: document.getElementById(clicked_id).getElementsByClassName("event-category")[0]["firstElementChild"].innerText,
+				Price: document.getElementById(clicked_id).getElementsByClassName("event-price")[0]["firstElementChild"].innerText
+				};
 
-function reply_click(clicked_id)
-  {
-	let obj = {ID: clicked_id}
-	console.log(clicked_id)
+	bag.push(item);
+
+	let obj = {Username: Username, shoppingBag: bag}
 	let xhttp = new XMLHttpRequest();
 	xhttp.open('POST', '/shoppingBag', true);
 
@@ -143,4 +148,30 @@ function reply_click(clicked_id)
 	}
 
 	xhttp.send(JSON.stringify(obj));
-  }
+}
+
+function viewReport(clicked_id){
+	let obj;
+	if(clicked_id === "666"){
+		obj = {Report_ID: clicked_id, OrderNumber: document.getElementById("orderNumber").value};
+	}else{
+		obj = {Report_ID: clicked_id}
+	}
+	console.log(obj)
+	let xhttp = new XMLHttpRequest();
+	xhttp.open('POST', '/report', true);
+
+	//Send the proper header information along with the request
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	xhttp.onload = function() {//Call a function when the state changes.
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			// redirect to the page after sending search request
+            // window.location.replace("/checkOut")
+		} else {
+			alert(xhttp.responseText)
+		}
+	}
+
+	xhttp.send(JSON.stringify(obj));
+}

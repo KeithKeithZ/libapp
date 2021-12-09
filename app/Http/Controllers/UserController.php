@@ -31,7 +31,7 @@ class UserController extends Controller
             return response($user, 200)
                         ->header('Content-Type', 'application/json');
         } else {
-            return response("login failed.", 400)
+            return response("User login failed.", 400)
                         ->header('Content-Type', 'text/plain');
         }
     }

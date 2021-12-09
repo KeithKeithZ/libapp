@@ -83,19 +83,19 @@
                                         </thead>
                                             <tbody>
                                                 @foreach ($bookList as $book)
-                                                    <tr class="inner-box">
+                                                    <tr class="inner-box" id={{ $book->ID }}>
                                                         <th scope="row">
-                                                            <div class="event-date">
+                                                            <div class="event-bookName" >
                                                                 <p>{{ $book->BookName }}</p>
                                                             </div>
                                                         </th>
                                                         <td>
-                                                            <div class="event-date">
-                                                                <p id='bookName'>{{ $book->Author }}</p>
+                                                            <div class="event-author">
+                                                                <p>{{ $book->Author }}</p>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="event-date">
+                                                            <div class="event-ISBN">
                                                                 <p>{{ $book->ISBN }}</p>
                                                             </div>
                                                         </td>
@@ -105,12 +105,12 @@
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="event-date">
+                                                            <div class="event-price">
                                                                 <p id="price">{{ $book-> Price }}</p>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <div class="event-date">
+                                                            <div class="event-category">
                                                                 <p id="category">{{ $book->Category }}</p>
                                                             </div>
                                                         </td>
@@ -121,7 +121,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="primary-btn">
-                                                            <button type="button" class="btn btn-primary" onclick="addToCart(); reply_click(this.id)" id={{ $book->ID }}>Add to Cart</button>
+                                                            <button type="button" class="btn btn-primary" onclick="reply_click(this.id)" id={{ $book->ID }}>Add to Cart</button>
                                                             </div>
                                                         </td>
                                                     </tr>
