@@ -27,9 +27,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/adminLogin">Admin Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/checkOut">Check Out</a>
-            </li>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Checkout
+            </button>
             </ul>
         </div>
     </nav>
@@ -121,7 +121,11 @@
                                                         </td>
                                                         <td>
                                                             <div class="primary-btn">
+<<<<<<< HEAD
                                                             <button type="button" class="btn btn-primary" onclick="reply_click(this.id)" id={{ $book->ID }}>Add to Cart</button>
+=======
+                                                            <button type="button" class="btn btn-primary" onclick="addToCart(this.id, '{{ $book->BookName }}', '{{ $book-> Price }}', '{{ $book-> Author }}');" id="{{ $book->ID }}">Add to Cart</button>
+>>>>>>> b0b4af346f4a59714b03ba3013d7b75fbb662b50
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -136,6 +140,26 @@
                 </div>
                 <!-- /row end-->
             </div>
+        </div>
+        <!-- Checkout Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ $currentCart ?? '' }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Confirm</button>
+            </div>
+            </div>
+        </div>
         </div>
     </body>
 </html>
