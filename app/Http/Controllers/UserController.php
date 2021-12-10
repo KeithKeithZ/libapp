@@ -29,6 +29,7 @@ class UserController extends Controller
 
         $user = DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"');
         if (sizeof($user) > 0) {
+            $request->session()->put('userId', $user[0]->ID);
             $request->session()->put('user', $username);
             $request->session()->put('email', $user[0]->Email);
             $request->session()->put('phone', $user[0]->PhoneNumber);

@@ -261,7 +261,8 @@ function confirmOrder(username){
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
-            // window.location.replace("/userProfile")
+            alert("Successfully submitted order!")
+			window.location.replace("/BookList")
 		} else {
 			alert(xhttp.responseText)
 		}

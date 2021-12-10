@@ -36,7 +36,7 @@ class OrderController extends Controller
         foreach ($bookName as $book) {
             $books = DB::update('update book set Book_In_Stock=Book_In_Stock-1 where bookName="'.$book.'"');
         }
-        // DB::insert('insert into userOrder(UserID, Order_ID) values (?, ?)', [session(''), $id]);
+        DB::insert('insert into userOrder(UserID, Order_ID) values (?, ?)', [session('userId'), $id]);
         return $orders;
     }
 
