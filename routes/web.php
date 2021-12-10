@@ -40,7 +40,7 @@ Route::get('/logout', function () {
 
 Route::get('/book', [BookController::class, 'getBooks']);
 
-Route::get('/user', [UserController::class, 'getUsers']);
+// Route::get('/user', [UserController::class, 'getUsers']);
 
 Route::get('/userRegister', function () {
     return view('userRegister');
@@ -68,7 +68,7 @@ Route::get('/viewReport', function () {
 });
 
 Route::get('/userProfile', function () {
-    $userProfile = app('App\Http\Controllers\UserController')->getUsers();
+    $userProfile = app('App\Http\Controllers\UserController')->getUserOrders();
     return view('userProfile', ['userProfile' => $userProfile]);
 });
 
