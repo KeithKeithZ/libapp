@@ -30,6 +30,10 @@ class UserController extends Controller
         $user = DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"');
         if (sizeof($user) > 0) {
             $request->session()->put('user', $username);
+            $request->session()->put('email', $user[0]->Email);
+            $request->session()->put('phone', $user[0]->PhoneNumber);
+            $request->session()->put('address', $user[0]->Address);
+            $request->session()->put('billingInfo', $user[0]->BillingInformation);
             return redirect('userProfile');
         } else {
             echo "Login Failed";

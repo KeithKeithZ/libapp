@@ -45,17 +45,22 @@
                         <div class="mb-4">
                             <h3 class="h4 mb-0">{{ session('user') }}</h3> 
                         </div>
-                        <ul class="social-icon-style2 ps-0">
-                            <li><a href="#!" class="rounded-3"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="#!" class="rounded-3"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#!" class="rounded-3"><i class="fab fa-youtube"></i></a></li>
-                            <li><a href="#!" class="rounded-3"><i class="fab fa-linkedin-in"></i></a></li>
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i> {{ session('email') }}</a></li>
+                            <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i> {{ session('phone') }}</a></li>
+                            <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i> {{ session('address') }}</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="ps-lg-1-6 ps-xl-5">
+                    <div class="mb-5 wow fadeIn">
+                        <div class="text-start mb-1-6 wow fadeIn">
+                            <h2 class="h1 mb-0 text-primary">#Billing Information</h2>
+                        </div>
+                        <p class="mb-0">{{ session('BillingInformation') }}</p>
+                    </div>                    
                     <div class="mb-5 wow fadeIn">
                         <div class="text-start mb-1-6 wow fadeIn">
                             <h2 class="mb-0 text-primary">#Order History</h2>

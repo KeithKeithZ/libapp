@@ -29,6 +29,10 @@ Route::post('login', [UserController::class, 'getUserLogin']);
 Route::get('/logout', function () {
     if(session()->has('user')){
         session()->pull('user');
+        session()->pull('email');
+        session()->pull('phone');
+        session()->pull('address');
+        session()->pull('billingInfo');   
     }
     return view('userSignIn');
 });
