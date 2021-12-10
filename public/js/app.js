@@ -244,13 +244,7 @@ function confirmOrder(username){
 	currentCart.forEach(function(el){
 		bookOrder.push(el.BookName);
 	})
-	// if(Username != ""){
-    	let obj = {Username: Username, Order_ID: Math.floor(100000 + Math.random() * 900000), OrderStatus: 'RECEIVED', OrderPayment: document.getElementById("billing").value, OrderDelivery: document.getElementById("address").value, OrderDatetime: dateTime, OrderAmount: document.getElementById("total").value, bookOrder: bookOrder}
-    // }
-	// else{
-	// 	alert("Please login in your account first!")
-	// 	window.location.replace("/userLogin")
-	// }
+	let obj = {Username: Username, Order_ID: Math.floor(100000 + Math.random() * 900000), OrderStatus: 'RECEIVED', OrderPayment: document.getElementById("billing").value, OrderDelivery: document.getElementById("address").value, OrderDatetime: dateTime, OrderAmount: document.getElementById("total").value, bookOrder: bookOrder}
 	console.log(obj)
 
 	let xhttp = new XMLHttpRequest();

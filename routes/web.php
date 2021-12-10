@@ -19,8 +19,8 @@ Route::get('/', function () {
     if(!session()->has('user')) {
         return view('userSignIn');
     } else {
-        $userProfile = app('App\Http\Controllers\UserController')->getUsers();
-        return view('userProfile', ['userProfile' => $userProfile]);
+        $userOrders = app('App\Http\Controllers\UserController')->getUserOrders();
+        return view('userProfile', ['userOrders' => $userOrders]);
     }
 });
 
