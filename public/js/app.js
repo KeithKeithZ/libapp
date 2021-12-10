@@ -224,7 +224,7 @@ function viewReport(clicked_id){
 	xhttp.send();
 }
 
-function confirmOrder(){
+function confirmOrder(username){
 	var date_ob = new Date();
 	var day = ("0" + date_ob.getDate()).slice(-2);
 	var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -255,9 +255,8 @@ function confirmOrder(){
 
 	let xhttp = new XMLHttpRequest();
 	xhttp.open('POST', '/addOrder', true);
-
-	//Send the proper header information along with the request
-	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhttp.setRequestHeader('Content-type', 'application/json');
+	xhttp.send(JSON.stringify(obj));
 
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
@@ -267,6 +266,4 @@ function confirmOrder(){
 			alert(xhttp.responseText)
 		}
 	}
-
-	xhttp.send(JSON.stringify(obj));
 }

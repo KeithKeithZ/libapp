@@ -196,7 +196,7 @@
                                             <div class="row d-flex justify-content-between px-4" id="tax">
                                                 <p class="mb-1 text-left">Total (tax included)</p>
                                                 <input class="total mb-1 text-right" id="total" readonly />
-                                            </div> <button class="btn-block btn-blue" onclick="confirmOrder()"> <span> <span id="checkout">Checkout</span></button>
+                                            </div> <button class="btn-block btn-blue" onclick="confirmOrder(`{{ session('user') }}`)"> <span> <span id="checkout">Checkout</span></button>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 ">
