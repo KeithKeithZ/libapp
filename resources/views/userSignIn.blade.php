@@ -22,9 +22,6 @@
                     <a class="nav-link" href="/">User Login <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/BookList">BookList</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/adminLogin">Admin Login</a>
                 </li>
             </ul>
