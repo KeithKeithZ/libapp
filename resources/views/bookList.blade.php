@@ -121,7 +121,7 @@
                                                         </td>
                                                         <td>
                                                             <div class="primary-btn">
-                                                                <button type="button" class="btn btn-primary" onclick="addToCart(this.id, '{{ $book->BookName }}', '{{ $book-> Price }}', '{{ $book-> Author }}');" id="{{ $book->ID }}">Add to Cart</button>
+                                                                <button type="button" class="btn btn-primary" onclick="addToCart(this.id, '{{ $book->BookName }}', '{{ $book-> Price }}', '{{ $book-> Category }}','{{ $book-> Author }}');" id="{{ $book->ID }}">Add to Cart</button>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -139,21 +139,68 @@
         </div>
         <!-- Checkout Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document" style="max-width: 80%;">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
                 <div class="modal-body">
-                    <input type="text" name="hiddenValue" id="hiddenValue" value="" />
+                    <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>BookName</th>
+                                <th>Author</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @for ($i = 0; $i < 3; $i++)
+                                    <tr>
+                                        <td><input type='text' id='bookName-{{ $i }}' class='bookName-{{ $i }}' readonly /></td>
+                                        <td><input type='text' id='author-{{ $i }}' class='author-{{ $i }}' readonly /></td>
+                                        <td><input type='text' id='category-{{ $i }}' class='category-{{ $i }}' readonly /></td>
+                                        <td><input type='text' id='price-{{ $i }}' class='price-{{ $i }}' readonly /></td>
+                                    </tr>
+                                @endfor
+                            </tbody>
+                        </table>
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="row">
+                                        <div class="col-lg-5">
+                                            <div class="row px-2">
+                                                <div class="form-group col-md-6"> <label class="form-control-label">Name on Card</label> <input type="text" id="cname" name="cname" placeholder="Johnny Doe"> </div>
+                                                <div class="form-group col-md-6"> <label class="form-control-label">Card Number</label> <input type="text" id="cnum" name="cnum" placeholder="1111 2222 3333 4444"> </div>
+                                            </div>
+                                            <div class="row px-2">
+                                                <div class="form-group col-md-6"> <label class="form-control-label">Expiration Date</label> <input type="text" id="exp" name="exp" placeholder="MM/YYYY"> </div>
+                                                <div class="form-group col-md-6"> <label class="form-control-label">CVV</label> <input type="text" id="cvv" name="cvv" placeholder="***"> </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 mt-2">
+                                            <div class="row d-flex justify-content-between px-4">
+                                                <p class="mb-1 text-left">Subtotal</p>
+                                                <h6 class="mb-1 text-right">$23.49</h6>
+                                            </div>
+                                            <div class="row d-flex justify-content-between px-4">
+                                                <p class="mb-1 text-left">Shipping</p>
+                                                <h6 class="mb-1 text-right">$2.99</h6>
+                                            </div>
+                                            <div class="row d-flex justify-content-between px-4" id="tax">
+                                                <p class="mb-1 text-left">Total (tax included)</p>
+                                                <h6 class="mb-1 text-right">$26.48</h6>
+                                            </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$26.48</span> </span> </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 ">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Confirm</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Confirm</button>
-            </div>
             </div>
         </div>
         </div>
