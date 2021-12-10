@@ -30,9 +30,12 @@ class OrderController extends Controller
         $address = $payload['OrderDelivery'];
         $time = $payload['OrderDatetime'];
         $amount = $payload['OrderAmount'];
+        $bookName = $payload['bookOrder'];
         
         $orders = DB::insert('insert into orders (Order_ID, OrderStatus, OrderPayment, OrderDelivery, OrderDatetime, OrderAmount) values (?, ?, ?, ?, ?, ?)', [$id, $status, $payment, $address, $time, $amount]);
-        
+        foreach ($bookName as $book) {
+            $books = DB::update('update book set Book_In_Stock=Book_In_Stock-1 where bookName="'.$book.'"');
+        }
         return $orders;
     }
 
