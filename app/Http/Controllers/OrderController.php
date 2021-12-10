@@ -22,16 +22,18 @@ class OrderController extends Controller
         dd($orders);
     }
 
-    public function addToCart(Request $request)
-    {
+    public function addOrder(Request $request){
         $payload = json_decode($request->getContent(), true);
-        $this-> bag = $payload['shoppingBag'];
-        return redirect()->route('checkOut');
-    }
-
-    public function getCart()
-    {
-        return view('cartCheckOut', ['shoppingBag' => $this-> bag]);
+        $id = $payload['Order_ID'];
+        $status = $payload['OrderStatus'];
+        $payment = $payload['OrderPayment'];
+        $address = $payload['OrderDelivery'];
+        $time = $payload['OrderDatetime'];
+        $amount = $payload['OrderAmount'];
+        
+        $orders = DB::insert('insert into orders (Order_ID, OrderStatus, OrderPayment, OrderDelivery, OrderDatetime, OrderAmount) values (?, ?, ?, ?, ?, ?)', [$id, $status, $payment, $address, $time, $amount]);
+        
+        return $orders;
     }
 
 }

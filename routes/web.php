@@ -87,15 +87,9 @@ Route::get('/adminLogout', function () {
 });
 
 Route::post('/bookManage', 'App\Http\Controllers\BookController@bookManage');
-Route::post('/shoppingBag', 'App\Http\Controllers\OrderController@addToCart');
 
-// Route::get('/checkOut', function () {
-//     $itemList = App::call('App\Http\Controllers\OrderController@getCart');
-//     return $itemList;
-//     // return view('cartCheckOut', ['shoppingBag' => $itemList]);
-// });
+Route::get('/report', 'App\Http\Controllers\ReportController@getReport');
 
-Route::get('/checkOut',"App\Http\Controllers\OrderController@getCart")->name('checkOut');
-
-Route::post('/report', 'App\Http\Controllers\ReportController@getReport');
 Route::get('/viewReport',"App\Http\Controllers\ReportController@displayReport")->name('viewReport');
+
+Route::post('/addOrder', 'App\Http\Controllers\OrderController@addOrder');

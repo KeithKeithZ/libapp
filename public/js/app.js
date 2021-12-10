@@ -1,5 +1,5 @@
-let Username;
-let AdminName;
+let Username = "";
+let AdminName = "";
 let currentCart = [];
 
 function filterBooks(){
@@ -54,7 +54,7 @@ function userRegister(){
 
 function userLogin(){
     let params = "?Username=" + document.getElementById("username").value + "&UserPassword=" +  document.getElementById("psw").value;
-	
+	Username = document.getElementById("username").value;
 	console.log(params)
 
 	let xhttp = new XMLHttpRequest();
@@ -78,6 +78,7 @@ function userLogin(){
 
 function adminLogin(){
 	let params = "?AdminName=" + document.getElementById("admin").value + "&AdminPassword=" +  document.getElementById("psw").value;
+	AdminName = document.getElementById("admin").value;
 	console.log(params)
 
 	let xhttp = new XMLHttpRequest();
@@ -136,12 +137,25 @@ function addToCart(bookId, bookName, bookPrice, bookCategory, bookAuthor){
 }
 
 $(document).on('click', ".open-AddBookDialog", function (event) {
+	var sum = 0;
 	$.each(currentCart, function(i, el){
 		$(".modal-body #bookName-"+i).val(el.BookName);
 		$(".modal-body #author-"+i).val(el.Author);
 		$(".modal-body #category-"+i).val(el.Category);
 		$(".modal-body #price-"+i).val(el.Price);
+		sum += parseFloat(el.Price);
 	})
+	console.log(sum)
+	$(".modal-body #subtotal").val(sum);
+	if(sum >= 50){
+		$(".modal-body #shipping").val(0.00);
+		var total = 1.13 * sum;
+		$(".modal-body #total").val(total.toFixed(2));
+	}else{
+		$(".modal-body #shipping").val(2.99);
+		var total = 1.13 * sum + 2.99;
+		$(".modal-body #total").val(total.toFixed(2));
+	}
   })
 
 function reply_click(clicked_id){
@@ -173,15 +187,16 @@ function reply_click(clicked_id){
 }
 
 function viewReport(clicked_id){
-	let obj;
+	var params;
 	if(clicked_id === "666"){
-		obj = {Report_ID: clicked_id, OrderNumber: document.getElementById("orderNumber").value};
+		params = "?Report_ID=" + clicked_id + "&OrderNumber=" + document.getElementById("orderNumber").value;
 	}else{
-		obj = {Report_ID: clicked_id}
+		params = "?Report_ID=" + clicked_id;
 	}
-	console.log(obj)
+
+	console.log(params)
 	let xhttp = new XMLHttpRequest();
-	xhttp.open('POST', '/report', true);
+	xhttp.open('GET', '/report'+ params, true);
 
 	//Send the proper header information along with the request
 	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
@@ -190,6 +205,49 @@ function viewReport(clicked_id){
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
             // window.location.replace("/checkOut")
+		} else {
+			alert(xhttp.responseText)
+		}
+	}
+
+	xhttp.send();
+}
+
+function confirmOrder(){
+	var date_ob = new Date();
+	var day = ("0" + date_ob.getDate()).slice(-2);
+	var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
+	var year = date_ob.getFullYear();
+	
+	var date = year + "-" + month + "-" + day;
+	console.log(date);
+		
+	var hours = date_ob.getHours();
+	var minutes = date_ob.getMinutes();
+	var seconds = date_ob.getSeconds();
+	
+	var dateTime = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+	console.log(dateTime);
+
+	// if(Username != ""){
+    	let obj = {Username: Username, Order_ID: Math.floor(100000 + Math.random() * 900000), OrderStatus: 'RECEIVED', OrderPayment: document.getElementById("billing").value, OrderDelivery: document.getElementById("address").value, OrderDatetime: dateTime, OrderAmount: document.getElementById("total").value}
+    // }
+	// else{
+	// 	alert("Please login in your account first!")
+	// 	window.location.replace("/userLogin")
+	// }
+	console.log(obj)
+
+	let xhttp = new XMLHttpRequest();
+	xhttp.open('POST', '/addOrder', true);
+
+	//Send the proper header information along with the request
+	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+	xhttp.onload = function() {//Call a function when the state changes.
+		if(xhttp.readyState == 4 && xhttp.status == 200) {
+			// redirect to the page after sending search request
+            window.location.replace("/userProfile")
 		} else {
 			alert(xhttp.responseText)
 		}

@@ -72,8 +72,8 @@
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th class="text-center" scope="col">Author</th>
-                                                <th scope="col">Book Name</th>
+                                                <th class="text-center" scope="col">Book Name</th>
+                                                <th scope="col">Author</th>
                                                 <th scope="col">ISBN</th>
                                                 <th scope="col">Publisher</th>
                                                 <th scope="col">Price</th>
@@ -170,31 +170,34 @@
                                         <div class="col-lg-5">
                                             <div class="row px-2">
                                                 <div class="form-group col-md-6"> <label class="form-control-label">Name on Card</label> <input type="text" id="cname" name="cname" placeholder="Johnny Doe"> </div>
-                                                <div class="form-group col-md-6"> <label class="form-control-label">Card Number</label> <input type="text" id="cnum" name="cnum" placeholder="1111 2222 3333 4444"> </div>
+                                                <div class="form-group col-md-6"> <label class="form-control-label">Card Number</label> <input type="text" id="billing" name="billing" placeholder="1111 2222 3333 4444"> </div>
                                             </div>
                                             <div class="row px-2">
                                                 <div class="form-group col-md-6"> <label class="form-control-label">Expiration Date</label> <input type="text" id="exp" name="exp" placeholder="MM/YYYY"> </div>
                                                 <div class="form-group col-md-6"> <label class="form-control-label">CVV</label> <input type="text" id="cvv" name="cvv" placeholder="***"> </div>
                                             </div>
+                                            <div class="row px-2">
+                                            <div class="form-group col-md-6"> <label class="form-control-label" >Shipping Address</label> <input type="text" id="address" name="address"> </div>
+                                            </div>
                                         </div>
                                         <div class="col-lg-4 mt-2">
                                             <div class="row d-flex justify-content-between px-4">
                                                 <p class="mb-1 text-left">Subtotal</p>
-                                                <h6 class="mb-1 text-right">$23.49</h6>
+                                                <input class="subtotal mb-1 text-right" id="subtotal" readonly />
                                             </div>
                                             <div class="row d-flex justify-content-between px-4">
-                                                <p class="mb-1 text-left">Shipping</p>
-                                                <h6 class="mb-1 text-right">$2.99</h6>
+                                                <p class="mb-1 text-left">Shipping </p>
+                                                <p class="mb-1 text-left">(Free shipping for order over $50)</p>
+                                                <input class="shipping mb-1 text-right" id="shipping" readonly />
                                             </div>
                                             <div class="row d-flex justify-content-between px-4" id="tax">
                                                 <p class="mb-1 text-left">Total (tax included)</p>
-                                                <h6 class="mb-1 text-right">$26.48</h6>
-                                            </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Checkout</span> <span id="check-amt">$26.48</span> </span> </button>
+                                                <input class="total mb-1 text-right" id="total" readonly />
+                                            </div> <button class="btn-block btn-blue" onclick="confirmOrder()"> <span> <span id="checkout">Checkout</span></button>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 ">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Confirm</button>
                                         </div>
                                     </div>
                                 </div>
