@@ -46,8 +46,12 @@ Route::get('/userRegister', function () {
 });
 
 Route::get('/BookList', function () {
-    $bookListArr = app('App\Http\Controllers\BookController')->getBooks();
-    return view('bookList', ['bookList' => $bookListArr]);
+    if(!session()->has('user')) {
+        return view('userSignIn');
+    } else {
+        $bookListArr = app('App\Http\Controllers\BookController')->getBooks();
+        return view('bookList', ['bookList' => $bookListArr]);
+    }
 });
 
 Route::get('/adminLogin', function () {
@@ -55,7 +59,11 @@ Route::get('/adminLogin', function () {
 });
 
 Route::get('/viewReport', function () {
-    return view('viewReport');
+    if(!session()->has('user')) {
+        return view('userSignIn');
+    } else {
+        return view('viewReport');
+    }
 });
 
 Route::get('/userProfile', function () {
