@@ -68,8 +68,8 @@ Route::get('/viewReport', function () {
 });
 
 Route::get('/userProfile', function () {
-    $userProfile = app('App\Http\Controllers\UserController')->getUserOrders();
-    return view('userProfile', ['userProfile' => $userProfile]);
+    $userOrders = app('App\Http\Controllers\UserController')->getUserOrders();
+    return view('userProfile', ['userOrders' => $userOrders]);
 });
 
 Route::get('/filterBooks/{params}', function ($params) {
