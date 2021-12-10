@@ -64,20 +64,6 @@ Route::get('/userProfile/{params}', function ($params) {
     return view('userProfile', ['user' => $userProfile]);
 });
 
-
-// Route::get('/login', function () {
-//     dd($username);
-//     // $array = explode("&", $params);
-//     // $value1 = explode("=", $array[0])[1];
-//     // $value2 = explode("=", $array[1])[1];
-//     // $userProfile=App::call('App\Http\Controllers\UserController@getUserLogin' , ['value1' => $value1, 'value2' => $value2]);
-//     // if($userProfile === null){
-//     //     echo '<script>alert("Invalid Username and Password.")<script>';
-//     // }else{
-//     //     return view('userProfile', ['user' => $userProfile]);
-//     // }
-// });
-
 Route::get('/login', 'App\Http\Controllers\UserController@getUserLogin');
 
 Route::post('/userRegister', 'App\Http\Controllers\UserController@addOne');
@@ -93,15 +79,9 @@ Route::get('/adminLogout', function () {
 });
 
 Route::post('/bookManage', 'App\Http\Controllers\BookController@bookManage');
-Route::post('/shoppingBag', 'App\Http\Controllers\OrderController@addToCart');
 
-// Route::get('/checkOut', function () {
-//     $itemList = App::call('App\Http\Controllers\OrderController@getCart');
-//     return $itemList;
-//     // return view('cartCheckOut', ['shoppingBag' => $itemList]);
-// });
+Route::get('/report', 'App\Http\Controllers\ReportController@getReport');
 
-Route::get('/checkOut',"App\Http\Controllers\OrderController@getCart")->name('checkOut');
-
-Route::post('/report', 'App\Http\Controllers\ReportController@getReport');
 Route::get('/viewReport',"App\Http\Controllers\ReportController@displayReport")->name('viewReport');
+
+Route::post('/addOrder', 'App\Http\Controllers\OrderController@addOrder');

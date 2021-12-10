@@ -16,6 +16,7 @@ class VerifyCsrfToken extends Middleware
         'checkOut',
         'bookManage',
         'shoppingBag',
-        'report'
+        'report',
+        'addOrder'
     ];
 }

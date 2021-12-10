@@ -16,8 +16,7 @@ class ReportController extends Controller
 
     public function getReport(Request $request)
     {
-        $payload = json_decode($request->getContent(), true);
-        $ID = $payload['Report_ID'];
+        $ID = $request->get('Report_ID');
         $report = DB::select('select ReportName from report where Report_ID="'.$ID.'"');
         if (sizeof($report) > 0) {
             // return response($report, 200)
@@ -27,7 +26,7 @@ class ReportController extends Controller
             }else if($ID === "555"){
                 $report = DB::select('select Username from users');
             }else if($ID === "666"){
-                $OrderNumber = $payload['OrderNumber'];
+                $OrderNumber = $request->get('OrderNumber');
                 $report = DB::select('select Order_ID, OrderStatus from orders where Order_ID="'.$OrderNumber.'"');
             }
         } else {
