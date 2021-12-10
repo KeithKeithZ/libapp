@@ -24,15 +24,15 @@ class UserController extends Controller
 
     public function getUserLogin(Request $request)
     {
-        $username = $request->get('Username');
-        $password = $request->get('UserPassword');
+        $username = $request->input()['username'];
+        $password = $request->input()['password'];
+
         $user = DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"');
         if (sizeof($user) > 0) {
-            return response($user, 200)
-                        ->header('Content-Type', 'application/json');
+            $request->session()->put('user', $username);
+            return redirect('userProfile');
         } else {
-            return response("User login failed.", 400)
-                        ->header('Content-Type', 'text/plain');
+            echo "Login Failed";
         }
     }
 

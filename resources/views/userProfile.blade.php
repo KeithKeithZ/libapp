@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <title>Bootstrap Example</title>
+        <title>Home</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -11,14 +11,14 @@
     </head>
     
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Dashboard</a>
+        <a class="navbar-brand" href="/userProfile">Welcome, {{ session('user') }}!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="/userLogout">User Logout <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/logout">Logout <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/BookList">BookList</a>
@@ -43,13 +43,8 @@
                     <img src="https://www.bootdey.com/img/Content/avatar/avatar6.png" alt="...">
                     <div class="card-body p-1-9 p-xl-5">
                         <div class="mb-4">
-                            <h3 class="h4 mb-0">{{ $user->Username }}</h3> 
+                            <h3 class="h4 mb-0">{{ session('user') }}</h3> 
                         </div>
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><a href="#!"><i class="far fa-envelope display-25 me-3 text-secondary"></i>{{ $user->Email }}</a></li>
-                            <li class="mb-3"><a href="#!"><i class="fas fa-mobile-alt display-25 me-3 text-secondary"></i>{{ $user->PhoneNumber }}</a></li>
-                            <li><a href="#!"><i class="fas fa-map-marker-alt display-25 me-3 text-secondary"></i>{{ $user->Address }}</a></li>
-                        </ul>
                         <ul class="social-icon-style2 ps-0">
                             <li><a href="#!" class="rounded-3"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#!" class="rounded-3"><i class="fab fa-twitter"></i></a></li>
@@ -61,12 +56,6 @@
             </div>
             <div class="col-lg-8">
                 <div class="ps-lg-1-6 ps-xl-5">
-                    <div class="mb-5 wow fadeIn">
-                        <div class="text-start mb-1-6 wow fadeIn">
-                            <h2 class="h1 mb-0 text-primary">#Billing Information</h2>
-                        </div>
-                        <p class="mb-0">{{ $user->BillingInformation }}</p>
-                    </div>
                     <div class="mb-5 wow fadeIn">
                         <div class="text-start mb-1-6 wow fadeIn">
                             <h2 class="mb-0 text-primary">#Order History</h2>

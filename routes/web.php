@@ -16,16 +16,26 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(!session()->has('user')) {
+        return view('userSignIn');
+    } else {
+        $userProfile = app('App\Http\Controllers\UserController')->getUsers();
+        return view('userProfile', ['userProfile' => $userProfile]);
+    }
+});
+
+Route::post('login', [UserController::class, 'getUserLogin']);
+
+Route::get('/logout', function () {
+    if(session()->has('user')){
+        session()->pull('user');
+    }
+    return view('userSignIn');
 });
 
 Route::get('/book', [BookController::class, 'getBooks']);
 
 Route::get('/user', [UserController::class, 'getUsers']);
-
-Route::get('/userLogin', function () {
-    return view('userSignIn');
-});
 
 Route::get('/userRegister', function () {
     return view('userRegister');
@@ -64,27 +74,7 @@ Route::get('/userProfile/{params}', function ($params) {
     return view('userProfile', ['user' => $userProfile]);
 });
 
-
-// Route::get('/login', function () {
-//     dd($username);
-//     // $array = explode("&", $params);
-//     // $value1 = explode("=", $array[0])[1];
-//     // $value2 = explode("=", $array[1])[1];
-//     // $userProfile=App::call('App\Http\Controllers\UserController@getUserLogin' , ['value1' => $value1, 'value2' => $value2]);
-//     // if($userProfile === null){
-//     //     echo '<script>alert("Invalid Username and Password.")<script>';
-//     // }else{
-//     //     return view('userProfile', ['user' => $userProfile]);
-//     // }
-// });
-
-Route::get('/login', 'App\Http\Controllers\UserController@getUserLogin');
-
 Route::post('/userRegister', 'App\Http\Controllers\UserController@addOne');
-
-Route::get('/userLogout', function () {
-    return view('welcome');
-});
 
 Route::get('/checkAdminLogin', 'App\Http\Controllers\AdminController@getAdminLogin');
 
