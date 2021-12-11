@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <title>Bootstrap Example</title>
+        <title>Online Library</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -196,7 +196,7 @@
                                             <div class="row d-flex justify-content-between px-4" id="tax">
                                                 <p class="mb-1 text-left">Total (tax included)</p>
                                                 <input class="total mb-1 text-right" id="total" readonly />
-                                            </div> <button class="btn-block btn-blue" onclick="confirmOrder()"> <span> <span id="checkout">Checkout</span></button>
+                                            </div> <button class="btn-block btn-blue" onclick="confirmOrder(`{{ session('user') }}`)"> <span> <span id="checkout">Checkout</span></button>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 ">

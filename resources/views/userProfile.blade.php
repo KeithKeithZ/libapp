@@ -59,7 +59,8 @@
                         <div class="text-start mb-1-6 wow fadeIn">
                             <h2 class="h1 mb-0 text-primary">#Billing Information</h2>
                         </div>
-                        <p class="mb-0">{{ session('BillingInformation') }}</p>
+                        &nbsp;
+                        <p class="mb-0">#: {{ session('billingInfo') }}</p>
                     </div>                    
                     <div class="mb-5 wow fadeIn">
                         <div class="text-start mb-1-6 wow fadeIn">
@@ -79,7 +80,6 @@
                                                             </div>
                                                         </th>
                                                         <th>Order #</th>
-                                                        <th>Company name</th>
                                                         <th>status</th>
                                                         <th>Total</th>
                                                         <th>Created</th>
@@ -87,58 +87,20 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody class="table-body">
-                                                    <tr class="cell-1">
-                                                        <td class="text-center">
-                                                            <div class="toggle-btn">
-                                                                <div class="inner-circle"></div>
-                                                            </div>
-                                                        </td>
-                                                        <td>#SO-13487</td>
-                                                        <td>Gasper Antunes</td>
-                                                        <td><span class="badge badge-success">Fullfilled</span></td>
-                                                        <td>$2674.00</td>
-                                                        <td>Today</td>
-                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                    </tr>
-                                                    <tr class="cell-1">
-                                                        <td class="text-center">
-                                                            <div class="toggle-btn">
-                                                                <div class="inner-circle"></div>
-                                                            </div>
-                                                        </td>
-                                                        <td>#SO-13453</td>
-                                                        <td>Aartsen van</td>
-                                                        <td><span class="badge badge-info">Confirmed</span></td>
-                                                        <td>$3454.00</td>
-                                                        <td>Yesterday</td>
-                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                    </tr>
-                                                    <tr class="cell-1">
-                                                        <td class="text-center">
-                                                            <div class="toggle-btn">
-                                                                <div class="inner-circle"></div>
-                                                            </div>
-                                                        </td>
-                                                        <td>#SO-13498</td>
-                                                        <td>Trashes Habard</td>
-                                                        <td><span class="badge badge-danger">Partially shipped</span></td>
-                                                        <td>$6274.00</td>
-                                                        <td>May 12,2020</td>
-                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                    </tr>
-                                                    <tr class="cell-1">
-                                                        <td class="text-center">
-                                                            <div class="toggle-btn">
-                                                                <div class="inner-circle"></div>
-                                                            </div>
-                                                        </td>
-                                                        <td>#SO-16499</td>
-                                                        <td>Samban Hubart</td>
-                                                        <td><span class="badge badge-success">Fullfilled</span></td>
-                                                        <td>$6375.00</td>
-                                                        <td>May 11,2020</td>
-                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
-                                                    </tr>
+                                                    @foreach ($userOrders as $order)                                                    
+                                                        <tr class="cell-1" id={{ $order->Order_ID }}>
+                                                            <td class="text-center">
+                                                                <div class="toggle-btn">
+                                                                    <div class="inner-circle"></div>
+                                                                </div>
+                                                            </td>
+                                                            <td>{{ $order->Order_ID }}</td>
+                                                            <td>{{ $order->OrderStatus }}</td>
+                                                            <td><span class="badge badge-success">{{ $order->OrderAmount }}</span></td>
+                                                            <td>{{ $order->OrderDatetime }}</td>
+                                                            <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                                        </tr>
+                                                    @endforeach    
                                                 </tbody>
                                             </table>
                                         </div>

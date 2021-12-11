@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function getUsers()
+    public function getUserOrders()
     {
-        $users = DB::select('select * from users');
-        return $users;
+        $orders = DB::select('select orders.* from orders INNER JOIN userOrder ON userOrder.Order_ID = orders.Order_ID AND userOrder.UserID = "'.session('userId').'"');
+        return $orders;
     }
 
     public function getUser($value)
@@ -29,6 +29,7 @@ class UserController extends Controller
 
         $user = DB::select('select * from users where Username="'.$username.'" AND UserPassword="'.$password.'"');
         if (sizeof($user) > 0) {
+            $request->session()->put('userId', $user[0]->ID);
             $request->session()->put('user', $username);
             $request->session()->put('email', $user[0]->Email);
             $request->session()->put('phone', $user[0]->PhoneNumber);

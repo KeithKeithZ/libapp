@@ -245,7 +245,7 @@ function viewReport(clicked_id){
 	xhttp.send();
 }
 
-function confirmOrder(){
+function confirmOrder(username){
 	var date_ob = new Date();
 	var day = ("0" + date_ob.getDate()).slice(-2);
 	var month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
@@ -265,29 +265,21 @@ function confirmOrder(){
 	currentCart.forEach(function(el){
 		bookOrder.push(el.BookName);
 	})
-	// if(Username != ""){
-    	let obj = {Username: Username, Order_ID: Math.floor(100000 + Math.random() * 900000), OrderStatus: 'RECEIVED', OrderPayment: document.getElementById("billing").value, OrderDelivery: document.getElementById("address").value, OrderDatetime: dateTime, OrderAmount: document.getElementById("total").value, bookOrder: bookOrder}
-    // }
-	// else{
-	// 	alert("Please login in your account first!")
-	// 	window.location.replace("/userLogin")
-	// }
+	let obj = {Username: Username, Order_ID: Math.floor(100000 + Math.random() * 900000), OrderStatus: 'RECEIVED', OrderPayment: document.getElementById("billing").value, OrderDelivery: document.getElementById("address").value, OrderDatetime: dateTime, OrderAmount: document.getElementById("total").value, bookOrder: bookOrder}
 	console.log(obj)
 
 	let xhttp = new XMLHttpRequest();
 	xhttp.open('POST', '/addOrder', true);
-
-	//Send the proper header information along with the request
-	xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+	xhttp.setRequestHeader('Content-type', 'application/json');
+	xhttp.send(JSON.stringify(obj));
 
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
-            window.location.replace("/userProfile")
+            alert("Successfully submitted order!")
+			window.location.replace("/BookList")
 		} else {
 			alert(xhttp.responseText)
 		}
 	}
-
-	xhttp.send(JSON.stringify(obj));
 }

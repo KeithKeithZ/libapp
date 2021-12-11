@@ -19,8 +19,8 @@ Route::get('/', function () {
     if(!session()->has('user')) {
         return view('userSignIn');
     } else {
-        $userProfile = app('App\Http\Controllers\UserController')->getUsers();
-        return view('userProfile', ['userProfile' => $userProfile]);
+        $userOrders = app('App\Http\Controllers\UserController')->getUserOrders();
+        return view('userProfile', ['userOrders' => $userOrders]);
     }
 });
 
@@ -29,6 +29,7 @@ Route::post('login', [UserController::class, 'getUserLogin']);
 Route::get('/logout', function () {
     if(session()->has('user')){
         session()->pull('user');
+        session()->pull('userId');
         session()->pull('email');
         session()->pull('phone');
         session()->pull('address');
@@ -39,7 +40,7 @@ Route::get('/logout', function () {
 
 Route::get('/book', [BookController::class, 'getBooks']);
 
-Route::get('/user', [UserController::class, 'getUsers']);
+// Route::get('/user', [UserController::class, 'getUsers']);
 
 Route::get('/userRegister', function () {
     return view('userRegister');
@@ -67,8 +68,8 @@ Route::get('/viewReport', function () {
 });
 
 Route::get('/userProfile', function () {
-    $userProfile = app('App\Http\Controllers\UserController')->getUsers();
-    return view('userProfile', ['userProfile' => $userProfile]);
+    $userOrders = app('App\Http\Controllers\UserController')->getUserOrders();
+    return view('userProfile', ['userOrders' => $userOrders]);
 });
 
 Route::get('/filterBooks/{params}', function ($params) {
