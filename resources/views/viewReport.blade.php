@@ -134,6 +134,46 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <input type="radio" id="radio" name="radio" value="radio" checked>
+                    <label for="huey">New Publisher</label>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Banking:</label>
+                            <input type="text" class="form-control" id="banking">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Name:</label>
+                            <input type="text" class="form-control" id="name">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Email:</label>
+                            <input type="text" class="form-control" id="email">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Address:</label>
+                            <input type="text" class="form-control" id="address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">PhoneNumber:</label>
+                            <input type="text" class="form-control" id="phone">
+                        </div>
+                    </div>
+                </div>
                 </form>
             </div>
             <div class="modal-footer">

@@ -101,10 +101,31 @@ function adminLogin(){
 }
 
 function submitBookManagement(){
+	const rbs = document.getElementById('radio').checked;
+	let obj;
 	let selectedIndex = document.getElementById("operations").value;
 	let operations = document.getElementById("operations").options[document.getElementById("operations").selectedIndex].text;
-    let obj = {operation: operations, BookName: document.getElementById("bookName").value, ISBN: document.getElementById("ISBN").value, Author: document.getElementById("author").value, Category: document.getElementById("category").value, Price: document.getElementById("price").value, Book_In_Stock: document.getElementById("stock").value, Publisher_ID: document.getElementById("publisher").value}
-    console.log(obj)
+    if (!rbs){
+		console.log("111")
+		obj = {newPublisher: false, operation: operations, BookName: document.getElementById("bookName").value, ISBN: document.getElementById("ISBN").value, Author: document.getElementById("author").value, Category: document.getElementById("category").value, Price: document.getElementById("price").value, Book_In_Stock: document.getElementById("stock").value, Publisher_ID: document.getElementById("publisher").value}
+	}else{
+		console.log("222")
+		obj = {newPublisher: true
+				,operation: operations, BookName: document.getElementById("bookName").value
+				,ISBN: document.getElementById("ISBN").value
+				, Author: document.getElementById("author").value
+				, Category: document.getElementById("category").value
+				, Price: document.getElementById("price").value
+				, Book_In_Stock: document.getElementById("stock").value
+				, Publisher_ID: document.getElementById("publisher").value
+				, BankingAccount: document.getElementById("banking").value
+				, Name: document.getElementById("name").value
+				, EmailAddress: document.getElementById("email").value
+				, Address: document.getElementById("address").value
+				, PhoneNumber: document.getElementById("phone").value
+				}
+	}
+		console.log(obj)
 
 	let xhttp = new XMLHttpRequest();
 	xhttp.open('POST', '/bookManage', true);
@@ -262,7 +283,7 @@ function confirmOrder(){
 	xhttp.onload = function() {//Call a function when the state changes.
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
-            // window.location.replace("/userProfile")
+            window.location.replace("/userProfile")
 		} else {
 			alert(xhttp.responseText)
 		}
