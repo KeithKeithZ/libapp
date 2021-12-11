@@ -277,7 +277,7 @@ function confirmOrder(username){
 		if(xhttp.readyState == 4 && xhttp.status == 200) {
 			// redirect to the page after sending search request
             alert("Successfully submitted order!")
-			window.location.replace("/BookList")
+			window.location.replace("/userProfile")
 		} else {
 			alert(xhttp.responseText)
 		}

@@ -35,9 +35,9 @@ VALUES('CeciliaChapman', 'psw111', 'ccc111@hotmail.com','711 Nulla St', '257-563
 
 
 INSERT INTO ADMIN(Admin_ID, AdminName, AdminPassword)
-VALUES(1111, 'Ina Moran', 'im1111'),
-(2222, 'Aaron Hawkins', 'ah2222'),
-(3333, 'Hedy Greene', 'hg3333');
+VALUES(1111, 'InaMoran', 'im1111'),
+(2222, 'AaronHawkins', 'ah2222'),
+(3333, 'HedyGreene', 'hg3333');
 
 
 INSERT INTO REPORT (Report_ID, ReportName)
